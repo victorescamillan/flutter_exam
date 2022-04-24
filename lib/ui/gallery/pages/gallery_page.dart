@@ -133,17 +133,14 @@ class _GalleryPageState extends State<GalleryPage> {
         items: galleryImages.map((image) {
           return Builder(
             builder: (BuildContext context) {
-                return InkWell(
-                  onTap: () => Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => ImageDetailsPage(image: image))),
-                  child: Stack(
-                    children: [
-                      Image.asset('assets/images/${image.imagePath}', fit: BoxFit.cover, width: MediaQuery.of(context).size.width, height: 250,),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Text(image.imagePath!),
-                      ),
-                    ],
-                  ),
+                return Stack(
+                  children: [
+                    Image.asset('assets/images/${image.imagePath}', fit: BoxFit.cover, width: MediaQuery.of(context).size.width, height: 250,),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(image.imagePath!),
+                    ),
+                  ],
                 );
             },
           );
