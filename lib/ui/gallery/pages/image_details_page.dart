@@ -13,6 +13,7 @@ class ImageDetailsPage extends StatefulWidget {
 
 class _ImageDetailsPageState extends State<ImageDetailsPage> {
   bool _isVisible = false;
+  bool _isMoved = false;
   @override
   void initState() {
     // TODO: implement initState
@@ -36,10 +37,13 @@ class _ImageDetailsPageState extends State<ImageDetailsPage> {
                     children: [
                       Text('Move to Tab ${widget.image!.displayLocation == DisplayLocation.tabA ? 'B' : 'A'}'),
                       Switch(
-                        value: false,
+                        value: _isMoved,
                         onChanged: (value){
                           widget.image!.displayLocation = widget.image!.displayLocation == DisplayLocation.tabA ? DisplayLocation.tabB : DisplayLocation.tabA;
                           context.read<GalleryCubit>().updateGallery(widget.image);
+                          setState(() {
+                            _isMoved = value;
+                          });
                         },
                         activeTrackColor: Colors.lightGreenAccent,
                         activeColor: Colors.green,
