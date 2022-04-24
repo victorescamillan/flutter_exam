@@ -99,6 +99,7 @@ class _GalleryPageState extends State<GalleryPage> {
                           onChanged: (value){
                             image.displayLocation = image.displayLocation == DisplayLocation.tabA ? DisplayLocation.tabB : DisplayLocation.tabA;
                             context.read<GalleryCubit>().updateGallery(image);
+                            Navigator.pop(context);
                           },
                           activeTrackColor: Colors.lightGreenAccent,
                           activeColor: Colors.green,
@@ -108,6 +109,7 @@ class _GalleryPageState extends State<GalleryPage> {
                         child: Checkbox(value: image.isVisible, onChanged: (value){
                           image.isVisible = value;
                           context.read<GalleryCubit>().updateGallery(image);
+                          Navigator.pop(context);
                         },),
                       ),
                     ],
